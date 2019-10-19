@@ -41,7 +41,6 @@ class MovieFragment : Fragment() {
         }else{
             toast("Tidak Ada")
         }
-
         return rootView
     }
 
@@ -66,7 +65,6 @@ class MovieFragment : Fragment() {
                     layoutManager = layoutmanager
                     setAdapter(adapter)
                 }
-
             },{
                 toast("Gagal saat Mengambil Data Movie")
             })
@@ -98,8 +96,6 @@ class MovieFragment : Fragment() {
             },{
                 toast("Gagal saat Mengambil Data Tv")
             })
-
-
     }
 
 
