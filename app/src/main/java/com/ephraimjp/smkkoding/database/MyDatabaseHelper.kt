@@ -9,7 +9,7 @@ class MyDatabaseHelper (context: Context)
     : ManagedSQLiteOpenHelper(context,
     "database_film.db",
     null,
-    1){
+    2){
 
     override fun onCreate(db: SQLiteDatabase?) {
         db?.createTable(

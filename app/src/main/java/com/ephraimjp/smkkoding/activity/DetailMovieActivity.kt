@@ -2,17 +2,23 @@ package com.ephraimjp.smkkoding.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.bumptech.glide.Glide
 import com.ephraimjp.smkkoding.R
 import com.ephraimjp.smkkoding.database.database
+import com.ephraimjp.smkkoding.model.DatabaseConstract
 import com.ephraimjp.smkkoding.model.MovieResultsItem
 import kotlinx.android.synthetic.main.activity_detail_movie.*
-import kotlinx.android.synthetic.main.activity_main.*
+import org.jetbrains.anko.db.classParser
+import org.jetbrains.anko.db.delete
 import org.jetbrains.anko.db.insert
+import org.jetbrains.anko.db.select
 import org.jetbrains.anko.sdk27.coroutines.onClick
 import org.jetbrains.anko.toast
 
 class DetailMovieActivity : AppCompatActivity() {
+
+    var isMovieFavorite: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,9 +32,27 @@ class DetailMovieActivity : AppCompatActivity() {
         Glide.with(this).load("https://image.tmdb.org/t/p/w500" + movie?.posterPath)
             .into(movie_poster)
 
-        button_favorite_movie.onClick {
-            //checkMovieFavorite(movie)
-            addMovieToFavorite(movie)
+        checkMovieFavorite(movie)
+
+        fav_movie_button.onClick {
+            if (isMovieFavorite) {
+                deleteMovieFavorite(movie)
+            } else {
+                addMovieToFavorite(movie)
+            }
+        }
+    }
+
+    private fun deleteMovieFavorite(movie: MovieResultsItem?) {
+        database.use {
+            delete(
+                MovieResultsItem.T_FAVORITE,
+                "${MovieResultsItem.C_TITLE} = {title}",
+                "title" to movie?.title.toString()
+            )
+            toast("Movie dihapus dari daftar favorite")
+            isMovieFavorite = false
+            fav_movie_button.text = "Tambah Favorite"
         }
     }
 
@@ -43,10 +67,31 @@ class DetailMovieActivity : AppCompatActivity() {
             )
         }
         toast("Berhasil di tambahkan ke Favorite!!!")
+        isMovieFavorite = true
+        fav_movie_button.text = "Hapus Favorite"
     }
 
     private fun checkMovieFavorite(movie: MovieResultsItem?) {
         //TODO Pengecekan film
+        database.use {
+            val isFavorite = select(MovieResultsItem.T_FAVORITE)
+                .whereArgs(
+                    MovieResultsItem.C_TITLE + " = {title}",
+                    "title" to movie?.title.toString()
+                )
+            val dataMovie = isFavorite.parseOpt(classParser<DatabaseConstract>())
+
+            Log.d("FAVORITE MOVIE", dataMovie.toString())
+
+            if (dataMovie != null) {
+                isMovieFavorite = true
+                fav_movie_button.text = "Hapus Favorite"
+            } else {
+                isMovieFavorite = false
+                fav_movie_button.text = "Tambah Favorite"
+            }
+        }
+
     }
 
 }

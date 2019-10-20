@@ -53,6 +53,8 @@ dependencies {
     implementation 'com.jakewharton.rxbinding2:rxbinding:2.1.1'
     //multidex
     implementation 'androidx.multidex:multidex:2.0.0'
+    //stetho
+    implementation "com.facebook.stetho:stetho:1.5.1"
 
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.12'
