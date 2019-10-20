@@ -1,6 +1,7 @@
 package com.ephraimjp.smkkoding.adapter
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -37,6 +38,8 @@ class MovieAdapter(
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(context: Context, movieModel: MovieResultsItem?) {
+            Log.d("ADAPTER", movieModel.toString())
+
             itemView.film_title.text = movieModel?.title
 
             Glide.with(context).load("https://image.tmdb.org/t/p/w500" + movieModel?.posterPath).into(itemView.film_poster)

@@ -49,6 +49,10 @@ data class MovieResultsItem(
     @field:SerializedName("vote_count")
     val voteCount: Int? = null
 ) : Parcelable {
+
+//    constructor(id:Int?,title: String?,popularity: Double?,posterPath: String?,overview: String?)
+//            : this(id = id, title = title, popularity = popularity, posterPath = posterPath, overview = overview)
+
     companion object {
         const val T_FAVORITE    = "t_favorite"
         const val C_FAVORITE_ID   = "favorite_id"

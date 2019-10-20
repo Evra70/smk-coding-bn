@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "546467760022",
+    "firebase_url": "https://smk-koding-bn.firebaseio.com",
+    "project_id": "smk-koding-bn",
+    "storage_bucket": "smk-koding-bn.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:546467760022:android:b6d4a90e161b56c3b1bfb7",
+        "android_client_info": {
+          "package_name": "com.ephraimjp.smkkoding"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "546467760022-va4ek52d653qvqruqi837pp2f8c9b1eb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ephraimjp.smkkoding",
+            "certificate_hash": "978fbe18c5d03f18ae1d665a0f2328a3e36478e5"
+          }
+        },
+        {
+          "client_id": "546467760022-chnvi4u139sqbelan17me0lh17keigva.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEkHGwb7BUwSTntxC9GOEVcFxgxNAw7cg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "546467760022-chnvi4u139sqbelan17me0lh17keigva.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -19,11 +19,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         button_favorite_movie.onClick {
-           toast("Fitur Masih Dalam Pengembangan :D")
+            startActivity(intentFor<ListFavorite>())
         }
 
         button_movie_list.onClick {
-//          cara normal :  val intent = Intent(this@MainActivity,ListMovieActivity::class.java)
+            //          cara normal :  val intent = Intent(this@MainActivity,ListMovieActivity::class.java)
 //            startActivity(intent)
             startActivity(intentFor<ListMovieActivity>())
         }
