@@ -8,16 +8,18 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.ephraimjp.smkkoding.R
+import com.ephraimjp.smkkoding.activity.DetailFavoriteActivity
 import com.ephraimjp.smkkoding.activity.DetailMovieActivity
+import com.ephraimjp.smkkoding.model.DatabaseConstract
 import com.ephraimjp.smkkoding.model.MovieResultsItem
 import kotlinx.android.synthetic.main.item_movie.view.*
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.sdk27.coroutines.onClick
 
-class MovieAdapter(
-    val list: List<MovieResultsItem?>?,
+class FavoriteAdapter(
+    val list: List<DatabaseConstract?>?,
     val context: Context
-) : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<FavoriteAdapter.ViewHolder>() {
 
     lateinit var itemView: View
 
@@ -37,14 +39,14 @@ class MovieAdapter(
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bind(context: Context, movieModel: MovieResultsItem?) {
-            itemView.film_title.text = movieModel?.title
+        fun bind(context: Context, dbModel: DatabaseConstract?) {
+            itemView.film_title.text = dbModel?.title
 
-            Glide.with(context).load("https://image.tmdb.org/t/p/w500" + movieModel?.posterPath).into(itemView.film_poster)
+            Glide.with(context).load("https://image.tmdb.org/t/p/w500" + dbModel?.posterPath).into(itemView.film_poster)
 
             itemView.onClick {
                 itemView.context.startActivity(
-                    itemView.context.intentFor<DetailMovieActivity>("movie" to movieModel)
+                    itemView.context.intentFor<DetailFavoriteActivity>("favorite" to dbModel)
                 )
             }
         }

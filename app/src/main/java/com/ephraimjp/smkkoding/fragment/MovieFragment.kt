@@ -2,6 +2,7 @@ package com.ephraimjp.smkkoding.fragment
 
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -56,7 +57,6 @@ class MovieFragment : Fragment() {
             .subscribe({ response ->
                 //sukses
                 val list = response.movieResults
-
                 val layoutmanager = LinearLayoutManager(activity)
 
                 val adapter = MovieAdapter(list, activity!!.applicationContext)
@@ -65,8 +65,9 @@ class MovieFragment : Fragment() {
                     layoutManager = layoutmanager
                     setAdapter(adapter)
                 }
+
             },{
-                toast("Gagal saat Mengambil Data Movie")
+                toast("Gagal saat Mengambil Data Tv")
             })
     }
 

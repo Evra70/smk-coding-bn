@@ -15,6 +15,7 @@
         <activity android:name=".activity.ListFavorite"></activity>
         <activity android:name=".activity.DetailTvActivity" />
         <activity android:name=".activity.DetailMovieActivity" />
+        <activity android:name=".activity.DetailFavoriteActivity" />
         <activity android:name=".activity.ListMovieActivity" />
         <activity android:name=".activity.ProfileActivity" />
         <activity android:name=".activity.MainActivity">
